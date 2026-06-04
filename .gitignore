@@ -1,0 +1,20 @@
+# --- Data: NEVER commit ntuples / input data (separate download) ---
+*.root
+/data/
+data/
+# macOS AppleDouble files that ship alongside ROOT files
+._*
+.DS_Store
+
+# Scaffolded analyses each have their own git repo
+analyses/
+
+# Python
+__pycache__/
+*.pyc
+
+# pixi
+.pixi/
+
+# SLURM logs
+.slurm_*.out

@@ -1,0 +1,151 @@
+% Standard preamble for reslop analysis notes.
+% Included via pandoc: --include-in-header=preamble.tex
+% Do not edit per-analysis unless you have a specific reason.
+
+% --- Graphics and floats ---
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{needspace}
+
+% Default figure sizing: HEIGHT-based, not width-based.
+%
+% All figures are produced at figsize=(10,10) — square. But figures
+% with colorbars (2D plots, correlation matrices) have extended width
+% (e.g., 12x10 effective) due to the colorbar axes. Setting size by
+% width makes these figures smaller than 1D plots at the same nominal
+% width fraction, because the extra colorbar width eats into the budget.
+%
+% Setting size by HEIGHT avoids this: a 0.45\linewidth height gives
+% consistent visual sizing regardless of colorbars, because the plot
+% area height is always 10 inches. Two figures side-by-side at
+% height=0.45\linewidth will have matching plot areas even if one has
+% a colorbar and the other doesn't.
+%
+% We unset the default width and set height instead.
+\setkeys{Gin}{height=0.45\linewidth,keepaspectratio}
+
+% --- Caption formatting ---
+% font=small keeps captions visually distinct from body text.
+% Full column width for both figure and table captions.
+\usepackage[font=small]{caption}
+
+% --- Tables: prevent page splits ---
+% Pandoc generates longtable by default, which splits across pages.
+% We strongly discourage this by penalizing breaks inside floats.
+% The typesetting agent should also convert longtables to regular
+% table floats where the table fits on a single page.
+\usepackage{longtable}
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+
+% --- Float placement (relaxed) ---
+% LaTeX defaults are too conservative for figure-heavy technical docs.
+% These settings allow up to 90% of a page to be floats, preventing
+% overfull vbox warnings and figure cutoffs.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.6}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
+
+% --- Paragraph and page breaking ---
+% Prevent widows and orphans (single lines at top/bottom of page).
+\widowpenalty=10000
+\clubpenalty=10000
+% Allow ragged page bottoms rather than stretching vertical glue
+% (which creates ugly spacing between paragraphs).
+\raggedbottom
+
+% --- Unicode glyph support (tectonic / xelatex / lualatex) ---
+%
+% The analysis notes deliberately use many non-ASCII glyphs OUTSIDE math
+% mode: μ σ ℓ ₄ ⁻¹ ≈ → ⊕ √ ± − × ≤ ≥ and various sub/superscripts. With
+% the default Latin Modern fonts these raise "Missing character" warnings
+% (xetex/luatex) or hard errors (pdflatex inputenc). tectonic compiles
+% with the XeTeX engine, so we load fontspec with a Unicode-rich font
+% family. This makes the AN compile without per-run hand-fixing of glyphs.
+%
+% Guarded with iftex so plain pdflatex still works: under pdflatex we fall
+% back to inputenc/textcomp and let newunicodechar (below) map the most
+% common glyphs to math-mode equivalents.
+\usepackage{iftex}
+\ifPDFTeX
+  % pdflatex path: byte-level UTF-8 input + Latin Modern + textcomp symbols.
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+  \usepackage{textcomp}
+\else
+  % XeTeX / LuaTeX path (tectonic uses XeTeX): fontspec with DejaVu, which
+  % covers the Greek, arrows, math-operator and sub/superscript glyphs the
+  % notes use. DejaVu Serif/Sans/Mono ship with TeX Live and are bundled
+  % with tectonic, so this resolves without a local font install.
+  \usepackage{fontspec}
+  \setmainfont{DejaVu Serif}
+  \setsansfont{DejaVu Sans}
+  \setmonofont{DejaVu Sans Mono}
+\fi
+
+% Per-glyph fallbacks via newunicodechar. These cover glyphs that DejaVu
+% Serif lacks (notably U+2113 SCRIPT SMALL L) and, under pdflatex, map the
+% commonly-used Unicode symbols to math-mode equivalents so the document
+% compiles regardless of engine. Each definition is robust to both engines.
+\usepackage{newunicodechar}
+
+% Script small l (U+2113, "ℓ"): DejaVu Serif has no glyph for this, so map
+% it to the math italic \ell on every engine.
+\newunicodechar{ℓ}{\ensuremath{\ell}}
+
+% Math operators / relations frequently used in prose and captions.
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{⊕}{\ensuremath{\oplus}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{−}{\ensuremath{-}}          % U+2212 MINUS SIGN
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{∓}{\ensuremath{\mp}}
+\newunicodechar{·}{\ensuremath{\cdot}}      % U+00B7 MIDDLE DOT
+
+% Greek letters seen in prose (μ σ etc.). DejaVu provides these under
+% XeTeX, but mapping to math mode guarantees consistent rendering and also
+% covers the pdflatex path.
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{χ}{\ensuremath{\chi}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Σ}{\ensuremath{\Sigma}}
+
+% Subscript / superscript digits and signs used in tokens like m₄ℓ and
+% fb⁻¹. Mapped to math sub/superscripts so they render on any engine.
+\newunicodechar{₀}{\textsubscript{0}}
+\newunicodechar{₁}{\textsubscript{1}}
+\newunicodechar{₂}{\textsubscript{2}}
+\newunicodechar{₃}{\textsubscript{3}}
+\newunicodechar{₄}{\textsubscript{4}}
+\newunicodechar{₅}{\textsubscript{5}}
+\newunicodechar{₆}{\textsubscript{6}}
+\newunicodechar{₇}{\textsubscript{7}}
+\newunicodechar{₈}{\textsubscript{8}}
+\newunicodechar{₉}{\textsubscript{9}}
+\newunicodechar{⁰}{\textsuperscript{0}}
+\newunicodechar{¹}{\textsuperscript{1}}
+\newunicodechar{²}{\textsuperscript{2}}
+\newunicodechar{³}{\textsuperscript{3}}
+\newunicodechar{⁴}{\textsuperscript{4}}
+\newunicodechar{⁵}{\textsuperscript{5}}
+\newunicodechar{⁶}{\textsuperscript{6}}
+\newunicodechar{⁷}{\textsuperscript{7}}
+\newunicodechar{⁸}{\textsuperscript{8}}
+\newunicodechar{⁹}{\textsuperscript{9}}
+\newunicodechar{⁻}{\textsuperscript{\ensuremath{-}}}
+\newunicodechar{⁺}{\textsuperscript{\ensuremath{+}}}

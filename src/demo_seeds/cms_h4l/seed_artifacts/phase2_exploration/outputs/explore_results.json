@@ -1,0 +1,278 @@
+{
+  "L_fb": 10.0,
+  "data_metadata": {
+    "lumi_fb_entries": [
+      10.0
+    ],
+    "lumi_fb_sum": 10.0,
+    "nInputEvents_sum": 9870406,
+    "nOutputEvents_sum": 719
+  },
+  "weights": {
+    "GluGluToHToZZ.root": {
+      "group": "signal",
+      "xsec_pb": 0.00602392,
+      "N_gen": 2998456,
+      "weight": 2.0090073024249817e-05
+    },
+    "VBF_HToZZ.root": {
+      "group": "signal",
+      "xsec_pb": 0.00048794,
+      "N_gen": 488000,
+      "weight": 9.99877049180328e-06
+    },
+    "ZHToZZ.root": {
+      "group": "signal",
+      "xsec_pb": 9.8394e-05,
+      "N_gen": 512586,
+      "weight": 1.919560815160773e-06
+    },
+    "WPHToZZ.root": {
+      "group": "signal",
+      "xsec_pb": 0.0001072352,
+      "N_gen": 129396,
+      "weight": 8.28736591548425e-06
+    },
+    "WMHToZZ.root": {
+      "group": "signal",
+      "xsec_pb": 6.70716e-05,
+      "N_gen": 176160,
+      "weight": 3.8074250681198908e-06
+    },
+    "ZZTo4L.root": {
+      "group": "qqZZ",
+      "xsec_pb": 1.325,
+      "N_gen": 99333000,
+      "weight": 0.00013338970936144082
+    },
+    "DYJetsToLL.root": {
+      "group": "DY",
+      "xsec_pb": 5396.0,
+      "N_gen": 151253358,
+      "weight": 0.3567524100853351
+    },
+    "TTBar.root": {
+      "group": "ttbar",
+      "xsec_pb": 52.7,
+      "N_gen": 29251271,
+      "weight": 0.01801631115447941
+    },
+    "GGZZ2E2Mu.root": {
+      "group": "ggZZ",
+      "xsec_pb": 0.003185,
+      "N_gen": 416000,
+      "weight": 7.65625e-05
+    },
+    "GGZZ4E.root": {
+      "group": "ggZZ",
+      "xsec_pb": 0.001575,
+      "N_gen": 986000,
+      "weight": 1.5973630831643003e-05
+    },
+    "GGZZ4Mu.root": {
+      "group": "ggZZ",
+      "xsec_pb": 0.001619,
+      "N_gen": 972170,
+      "weight": 1.665346595760001e-05
+    }
+  },
+  "finalState_mapping": {
+    "0": {
+      "compositions": {
+        "0e4mu": 1805644
+      },
+      "dominant": "0e4mu",
+      "dominant_frac": 1.0
+    },
+    "1": {
+      "compositions": {
+        "4e0mu": 1149201
+      },
+      "dominant": "4e0mu",
+      "dominant_frac": 1.0
+    },
+    "2": {
+      "compositions": {
+        "2e2mu": 1973638
+      },
+      "dominant": "2e2mu",
+      "dominant_frac": 1.0
+    }
+  },
+  "candidates_vs_events": {
+    "GluGluToHToZZ.root": {
+      "n_candidates": 420275,
+      "n_unique_events": 420275,
+      "multi_cand_events": 0
+    },
+    "ZZTo4L.root": {
+      "n_candidates": 3333903,
+      "n_unique_events": 3333903,
+      "multi_cand_events": 0
+    },
+    "data_secret_10fb.root": {
+      "n_candidates": 719,
+      "n_unique_events": 477,
+      "multi_cand_events": 242
+    },
+    "DYJetsToLL.root": {
+      "n_candidates": 621,
+      "n_unique_events": 621,
+      "multi_cand_events": 0
+    }
+  },
+  "yields": {
+    "GluGluToHToZZ.root": {
+      "group": "signal",
+      "n_raw_total": 420275,
+      "n_raw_presel": 384092,
+      "weighted_presel": 7.71643632803016,
+      "per_channel": {
+        "4e": 1.611203766471811,
+        "4mu": 2.5599976451880573,
+        "2e2mu": 3.5452349163702923,
+        "other": 0.0
+      }
+    },
+    "VBF_HToZZ.root": {
+      "group": "signal",
+      "n_raw_total": 76779,
+      "n_raw_presel": 69926,
+      "weighted_presel": 0.6991740254098362,
+      "per_channel": {
+        "4e": 0.1484817418032787,
+        "4mu": 0.2274820274590164,
+        "2e2mu": 0.323210256147541,
+        "other": 0.0
+      }
+    },
+    "ZHToZZ.root": {
+      "group": "signal",
+      "n_raw_total": 72515,
+      "n_raw_presel": 68470,
+      "weighted_presel": 0.13143232901405813,
+      "per_channel": {
+        "4e": 0.028424856550900723,
+        "4mu": 0.03928573164308038,
+        "2e2mu": 0.06372174082007702,
+        "other": 0.0
+      }
+    },
+    "WPHToZZ.root": {
+      "group": "signal",
+      "n_raw_total": 16304,
+      "n_raw_presel": 14918,
+      "weighted_presel": 0.12363092472719404,
+      "per_channel": {
+        "4e": 0.026486421465887665,
+        "4mu": 0.0397793563943244,
+        "2e2mu": 0.05736514686698198,
+        "other": 0.0
+      }
+    },
+    "WMHToZZ.root": {
+      "group": "signal",
+      "n_raw_total": 25280,
+      "n_raw_presel": 23099,
+      "weighted_presel": 0.08794771164850136,
+      "per_channel": {
+        "4e": 0.01914754066757493,
+        "4mu": 0.02827774598092643,
+        "2e2mu": 0.040522425,
+        "other": 0.0
+      }
+    },
+    "ZZTo4L.root": {
+      "group": "qqZZ",
+      "n_raw_total": 3333903,
+      "n_raw_presel": 2366552,
+      "weighted_presel": 315.6736834687365,
+      "per_channel": {
+        "4e": 68.5228272578096,
+        "4mu": 101.4638161537455,
+        "2e2mu": 145.6870400571814,
+        "other": 0.0
+      }
+    },
+    "DYJetsToLL.root": {
+      "group": "DY",
+      "n_raw_total": 621,
+      "n_raw_presel": 561,
+      "weighted_presel": 200.138102057873,
+      "per_channel": {
+        "4e": 95.6096459028698,
+        "4mu": 3.924276510938686,
+        "2e2mu": 100.6041796440645,
+        "other": 0.0
+      }
+    },
+    "TTBar.root": {
+      "group": "ttbar",
+      "n_raw_total": 776,
+      "n_raw_presel": 692,
+      "weighted_presel": 12.46728731889975,
+      "per_channel": {
+        "4e": 5.278779168262466,
+        "4mu": 0.7026361350246969,
+        "2e2mu": 6.485872015612587,
+        "other": 0.0
+      }
+    },
+    "GGZZ2E2Mu.root": {
+      "group": "ggZZ",
+      "n_raw_total": 197379,
+      "n_raw_presel": 185857,
+      "weighted_presel": 14.2296765625,
+      "per_channel": {
+        "4e": 0.000153125,
+        "4mu": 7.65625e-05,
+        "2e2mu": 14.229446874999999,
+        "other": 0.0
+      }
+    },
+    "GGZZ4E.root": {
+      "group": "ggZZ",
+      "n_raw_total": 415426,
+      "n_raw_presel": 401753,
+      "weighted_presel": 6.417454107505072,
+      "per_channel": {
+        "4e": 6.417422160243408,
+        "4mu": 0.0,
+        "2e2mu": 3.194726166328601e-05,
+        "other": 0.0
+      }
+    },
+    "GGZZ4Mu.root": {
+      "group": "ggZZ",
+      "n_raw_total": 560781,
+      "n_raw_presel": 535625,
+      "weighted_presel": 8.920012703539506,
+      "per_channel": {
+        "4e": 0.0,
+        "4mu": 8.919829515413971,
+        "2e2mu": 0.0001831881255336001,
+        "other": 0.0
+      }
+    },
+    "data_secret_10fb.root": {
+      "group": "data",
+      "n_raw_total": 719,
+      "n_raw_presel": 601,
+      "weighted_presel": 601.0,
+      "per_channel": {
+        "4e": 211,
+        "4mu": 68,
+        "2e2mu": 322,
+        "other": 0
+      }
+    }
+  },
+  "group_yields": {
+    "signal": 8.758621318829752,
+    "qqZZ": 315.6736834687365,
+    "DY": 200.138102057873,
+    "ttbar": 12.46728731889975,
+    "ggZZ": 29.567143373544578,
+    "data": 601.0
+  }
+}
