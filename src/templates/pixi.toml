@@ -43,9 +43,10 @@ rich = ">=13.0"
 
 [tasks]
 py = "python"
-# build-pdf is a convenience helper for quick compilation. The typesetter
-# subagent invokes pandoc directly with the specific versioned filename
-# (e.g., ANALYSIS_NOTE_4a_v1.md) rather than using this task.
+# build-pdf is a convenience helper for quick compilation. The executor
+# (which owns AN writing + typesetting from Phase 4a on) invokes pandoc
+# directly with the phase-stamped filename (e.g. ANALYSIS_NOTE_4a_v1.md)
+# rather than using this task.
 build-pdf = "cd phase5_documentation/outputs && EXTRA_PREAMBLE=''; [ -f analysis_preamble.tex ] && EXTRA_PREAMBLE='--include-in-header=analysis_preamble.tex'; pandoc ANALYSIS_NOTE_5_v1.md -o ANALYSIS_NOTE_5_v1.tex --standalone --include-in-header=../../conventions/preamble.tex $EXTRA_PREAMBLE --number-sections --toc --filter pandoc-crossref --citeproc --bibliography=references.bib && python ../../conventions/postprocess_tex.py ANALYSIS_NOTE_5_v1.tex && tectonic ANALYSIS_NOTE_5_v1.tex"
 lint-plots = "python conventions/lint_plots.py ."
 # --- Analysis tasks: add as you write scripts ---

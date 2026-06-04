@@ -11,9 +11,10 @@ Usage:
 Each violation is printed as:
     VIOLATION: <file>:<line> — <rule description>
 
-This script is the mechanical counterpart to the visual plot validator
-agent. It catches code-level issues; the agent catches rendered-output
-issues (overlap, readability, layout).
+This script is the mechanical counterpart to the executor's visual
+self-lint (and the reviewer's figure checks). It catches code-level
+issues; visual inspection catches rendered-output issues (overlap,
+readability, layout).
 """
 
 import re

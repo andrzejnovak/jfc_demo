@@ -1,64 +1,27 @@
-<!-- This file is a template for spec developers creating new conventions
-     files. Agents should ignore it — it contains no analysis requirements.
-     See unfolding.md, extraction.md, or search.md for actual conventions. -->
+<!-- Skeleton for spec developers creating a new conventions file. Agents
+     ignore it — it contains no analysis requirements. See unfolding.md,
+     extraction.md, or search.md for actual conventions. Keep new files
+     lean: the required-systematic tables and validation checks are the
+     load-bearing content; trim prose. -->
 
 # [Technique Name]
 
-Conventions for analyses that [one-sentence description of what technique
-this covers].
+Conventions for analyses that [one-sentence description].
 
 ## When this applies
-
-[Criteria for when this conventions file is relevant — analysis technique,
-observable type, or detector configuration.]
-
----
+[When this file is relevant — technique, observable type, detector config. Note which other conventions file applies if this one does not.]
 
 ## Standard configuration
-
-[Default settings, parameters, or definitions that analyses of this type
-should adopt unless explicitly justified otherwise.]
-
----
+[Default settings/parameters/definitions analyses of this type adopt unless justified otherwise.]
 
 ## Required systematic sources
-
-### [Category 1: e.g., Detector and reconstruction]
-
-| Source | What to vary | Rationale |
-|--------|-------------|-----------|
-| ... | ... | ... |
-
-### [Category 2: e.g., Method-specific]
-
-| Source | What to vary | Rationale |
-|--------|-------------|-----------|
-| ... | ... | ... |
-
-### [Category 3: e.g., Theory inputs]
-
-| Source | What to vary | Rationale |
-|--------|-------------|-----------|
-| ... | ... | ... |
-
----
+Group by category (detector/reconstruction, method-specific, theory). Each: source — what to vary — rationale.
 
 ## Required validation checks
-
-[Enumerated list of checks that must pass before the result is considered
-valid. Each check should specify: what is tested, what constitutes a pass,
-and what to do on failure.]
-
----
+Enumerated pass/fail checks. Each: what is tested, what constitutes a pass (with the threshold), and what to do on failure (mark Category A where it blocks).
 
 ## Pitfalls
-
-- **[Pitfall name].** [Description of the mistake, why it happens, and how
-  to avoid it.]
-
----
+- **[Name].** [The mistake, why it happens, how to avoid it.]
 
 ## References
-
-[Published analyses, methodology papers, or experiment notes that define
-or motivate these conventions.]
+[Published analyses / methodology papers that define or motivate these conventions.]

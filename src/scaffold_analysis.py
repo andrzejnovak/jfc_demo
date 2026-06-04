@@ -259,7 +259,9 @@ def copy_demo_seed(analysis_dir: Path, demo_name: str):
         stub_bib = (
             analysis_dir / "phase5_documentation" / "outputs" / "references.bib"
         )
-        seed_bib = artifacts_dir / "phase5_documentation" / "outputs" / "references.bib"
+        seed_bib = (
+            artifacts_dir / "phase5_documentation" / "outputs" / "references.bib"
+        )
         if seed_bib.exists() and stub_bib.exists():
             stub_bib.unlink()
             print(f"  replacing stub {stub_bib}")

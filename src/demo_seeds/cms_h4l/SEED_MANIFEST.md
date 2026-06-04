@@ -39,7 +39,7 @@ tested selection/fit **skeletons**; the **first live act is Phase 3**.
 |---|---|---|
 | `prompt.md` | Founding analysis prompt | The founding document; identical every run by definition |
 | `COMMITMENTS.md` | Phase-1-state commitment ledger (all `[ ]`) | Captured at the Phase-1 commit (`1091b88`); the live run closes/downscopes each line as it progresses |
-| `phase1_strategy/outputs/STRATEGY.md` | Phase 1 strategy (technique, systematics plan, references) | Fixed by the prompt + reference analyses; already 4-bot reviewed in the source run |
+| `phase1_strategy/outputs/STRATEGY.md` | Phase 1 strategy (technique, systematics plan, references) | Fixed by the prompt + reference analyses; already critically reviewed in the source run |
 | `phase2_exploration/outputs/EXPLORATION.md` | Phase 2 exploration write-up | Describes the fixed dataset; deterministic given the ntuples |
 | `phase2_exploration/outputs/schema_summary.json` | Per-file branch sets, entry counts, object map | Read directly off the ROOT files; deterministic |
 | `phase2_exploration/outputs/explore_results.json` | Per-sample `N_gen`, `xsec_pb`, normalization `weight`, group map, yields | `weight = xsec[pb]·1000·L / N_gen`, `L = 10 fb⁻¹`; pure function of (prompt cross sections + dataset) |
@@ -117,8 +117,8 @@ likelihood, so that scan width is dominated by statistics — quadrature-adding
 ≈ 0.716; the correct value (per-NP impact quadrature for `sigma_syst`) is
 ≈ 0.514.
 
-- **Caught by:** the LIVE Phase-4a review, which re-derives the uncertainty
-  decomposition and flags the double-count.
+- **Caught by:** the **critical_reviewer in the LIVE Phase-4a showcase panel**,
+  which re-derives the uncertainty decomposition and flags the double-count.
 - **Do NOT** add the correction to the skeleton. Only a natural-looking
   in-code comment (the original "systematics-only broadening" framing) and a
   generic header hint ("verify the uncertainty decomposition") are present —
@@ -134,8 +134,9 @@ normalization and no scale factor** anywhere in the seed. At full data this
 MC over-predicts by ≈ 2× at the on-shell Z→4ℓ peak (88–96 GeV), producing a
 **−4.56σ data/MC pull**.
 
-- **Caught by:** the LIVE Phase-4b control-region (Z→4ℓ) data/MC anchor,
-  which surfaces the pull → investigator → regression ticket → human gate.
+- **Caught by:** the **lean-native Phase-4b** control-region (Z→4ℓ) data/MC
+  anchor — no demo panel needed. The pull surfaces → investigator →
+  §6.7 regression ticket → human gate (all base machinery).
 - **Do NOT** pre-scale qqZZ, add a data-driven `ZZTo4L` normalization, or
   introduce any control-region scale factor in any seed file
   (`skeletons/selection/*`, `explore_results.json`, etc.).
@@ -152,8 +153,9 @@ Deciphering the Nature of the Higgs Sector"* (CERN Yellow Report 4), but its
 (Karlberg et al.), **not** YR4. The correct YR4 eprint is `1610.07922`. This
 analysis is at 13 TeV, so the slipped reference is also the wrong energy.
 
-- **Caught by:** the LIVE BibTeX validator, which checks the eprint against
-  the claimed title/report and flags the mismatch.
+- **Caught by:** the **bibtex_validator in the LIVE Phase-4a showcase panel**,
+  which fetches the eprint, compares it against the claimed title/report, and
+  flags the mismatch.
 - **Do NOT** correct the `eprint`. All **other** bib entries are correct;
   this is the single planted slip. (The seed bib was started from the
   *corrected* 4a bib and this one field was re-slipped.)
@@ -166,20 +168,33 @@ These are generated/run live every demo and are NOT pre-baked:
 
 - **Phase 3 — Selection (first live act).** The executor adapts the selection
   skeleton, sets and justifies the cut values, runs it over all samples,
-  produces cutflow + N-1 + m4l spectrum plots, and is reviewed (1-bot).
+  produces cutflow + N-1 + m4l spectrum plots, and is reviewed by the lean
+  **critical_reviewer** (the Phase-3 gate).
 - **Phase 4a — Expected inference.** Executor builds/finalizes the model from
   the fit skeleton, computes Asimov expected μ / m_H + systematics, writes
-  AN v1; the **4-bot+bib review catches the `sigma_mu` double-count (planted
-  item i)** and the **BibTeX validator catches the YR4 slip (planted item iii)**.
-- **Phase 4b — 10% data validation + regression + human gate.** The Z→4ℓ
-  data/MC anchor surfaces the **un-normalized qqZZ pull (planted item ii)**,
-  triggering the investigator → regression ticket → human gate.
-- **Phase 4c — Full data result.** Live, 1-bot review.
-- **Phase 5 — Final analysis note.** Live, 5-bot review.
+  AN v1. In demo mode (`demo_seed=cms_h4l`) Phase 4a runs the **showcase
+  mini-panel** — `critical_reviewer` + `bibtex_validator` + `plot_validator`,
+  parallel, orchestrator-adjudicated (no arbiter). The **critical_reviewer
+  re-derives the uncertainty decomposition and catches the `sigma_mu`
+  double-count (planted item i)**; the **bibtex_validator catches the YR4
+  eprint slip (planted item iii)**. (Outside demo mode, 4a is just the
+  orchestrator's light fit-converges/recovers-inputs check.)
+- **Phase 4b — 10% data validation + regression + human gate.** The lean-native
+  Z→4ℓ data/MC anchor surfaces the **un-normalized qqZZ pull (planted item
+  ii)**, triggering the investigator → §6.7 regression ticket → human gate.
+  No demo panel here — this is base machinery.
+- **Phase 4c — Full data result.** Live; orchestrator regression + completeness
+  checklist (no reviewer gate in the lean base).
+- **Phase 5 — Final analysis note.** Live; orchestrator completeness checklist.
 
-The orchestration, all reviews, the regression machinery, and the human gate
-all run live. The seed only removes the deterministic *setup* work, never the
-*analysis* work or the moments where the process catches a real problem.
+The orchestration, the Phase-1/3 critical reviewer, the 4a showcase panel, the
+regression machinery, and the human gate all run live. The seed only removes the
+deterministic *setup* work, never the *analysis* work or the moments where the
+process catches a real problem.
+
+**The three catchers, at a glance:** `critical_reviewer` @ 4a panel →
+`sigma_mu` (i); `bibtex_validator` @ 4a panel → YR4 slip (iii); lean-native 4b
+regression + human gate → un-normalized qqZZ (ii).
 
 ---
 
